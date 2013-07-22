@@ -1,0 +1,1 @@
+This is only a test case for first usage of git
