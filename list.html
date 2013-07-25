@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+    
+     var id=window.localStorage.getItem("id");
+     alert("now we get the id of clicked item it is: "+id);//here we get the id of category and post it to php script
+      function loadXMLDoc()//load the json file from server
+        {
+            var xmlhttp;
+            if (window.XMLHttpRequest)
+              {// code for IE7+, Firefox, Chrome, Opera, Safari
+              xmlhttp=new XMLHttpRequest();
+              }
+            else
+              {// code for IE6, IE5
+              xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+              }
+            xmlhttp.onreadystatechange=function()
+              {
+              if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    var data=xmlhttp.responseText;
+                   // alert("we got the data following            ");
+                   // alert(data);
+
+                    // var arr=eval(data);
+                    var arr=eval("("+xmlhttp.responseText+")");
+
+                    var length=Object.keys(arr).length;                    
+                    var listContainer=document.createElement("div");
+                    //alert("ReadyforLoop");
+                    document.getElementsByTagName("body")[0].appendChild(listContainer);//add it to the page
+                    //alert("HereIam");
+                    var listElement=document.createElement("ul");
+                    listElement.style.listStyleType="none";
+                    //make the list itself as a ul
+                    listContainer.appendChild(listElement);
+                    //alert("load the list");
+                    for (var i=1; i <=length ; i++) 
+                       {
+                          
+                           var listItem=document.createElement("li");
+                           listItem.innerHTML= "<a href= content.html>";
+                           listElement.appendChild(listItem);
+
+                        }
+                }
+            }
+            xmlhttp.open("GET","http://cernobbio.lapagodacomo.com/getList.php",true);
+            xmlhttp.send("idCat="+id);
+        }
+</head>
+
+</script>
+
+<body onload="loadXMLDoc()">
+<h2>UCNews Category</h2>
+<div id="myDiv"></div>
+</body>
+</html>
+
+
