@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<h2>UCNews Category</h2>
+<div id="myDiv"></div>
+<ul id="listofCat">
+    <li><a href="list.html" id="1" onclick="showId(this)">News</a></li>
+    <li><a href="list.html" id="2" onclick="showId(this)">Smart City</a></li>
+    <li><a href="list.html" id="3" onclick="showId(this)">Smart Living</a></li>
+    <li><a href="list.html" id="4" onclick="showId(this)">Ambiente&Territorioi</a></li>
+    <li><a href="list.html" id="5" onclick="showId(this)">Formazionei</a></li>
+    <li><a href="list.html" id="6" onclick="showId(this)">vAppuntamenti</a></li>
+</ul>
+<script type="text/javascript">
+    
+   window.localStorage.setItem("id","0");
+   //alert(window.localStorage.getItem("id"));
+   function showId(clicked)
+   {
+     window.localStorage.setItem("id",clicked.id)
+     var id=window.localStorage.getItem("id");
+     alert(id);
+
+   }
+</script>
+
+</body>
+</html>
+
